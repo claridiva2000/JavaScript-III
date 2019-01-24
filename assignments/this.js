@@ -7,7 +7,7 @@
 
 * 3. Explicit binding : Whenever JavaScript’s call or apply method is used, this is explicitly defined.
 
-* 4. New binding: when you create a new object using the constructor function. const jerry = new Person('jerry')
+* 4. New binding: when you create a new object using the constructor function. 
 *
 * write out a code example of each explanation above
 */

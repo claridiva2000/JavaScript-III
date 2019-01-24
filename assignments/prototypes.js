@@ -14,6 +14,15 @@
   * dimensions (These represent the character's size in the video game)
   * destroy() // prototype method -> returns the string: 'Object was removed from the game.'
 */
+function GameObject(object){
+  this.createdAt = object.createdAt;
+  this.dimensions= object.dimensions;
+}
+
+GameObject.prototype.destroy = function() {
+  return `Object was removed from the game`;
+};
+
 
 /*
   === CharacterStats ===
@@ -22,6 +31,21 @@
   * takeDamage() // prototype method -> returns the string '<object name> took damage.'
   * should inherit destroy() from GameObject's prototype
 */
+function CharacterStats(stats){
+  this.healthPoints = stats.healthPoints;
+  this.name= stats.name;
+}
+
+// function Child(childAttributes) {
+//   CharacterStats.call(this, childAttributes);
+//   this.isChild = childAttributes.isChild;
+// }
+//
+//child.prototype =Object.create(person.prototype);
+
+// CharacterStats.prototype.takeDamage() = function() {
+//   return '<object name> took damage.';
+// };
 
 /*
   === Humanoid (Having an appearance or character resembling that of a human.) ===
@@ -32,7 +56,11 @@
   * should inherit destroy() from GameObject through CharacterStats
   * should inherit takeDamage() from CharacterStats
 */
- 
+function Humanoid(hooman){
+  this.team = hooman.team;
+  this.weapon= hooman.weapon;
+  this.language= hooman.language;
+}
 /*
   * Inheritance chain: GameObject -> CharacterStats -> Humanoid
   * Instances of Humanoid should have all of the same properties as CharacterStats and GameObject.
@@ -107,4 +135,5 @@
   // Stretch task: 
   // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
   // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
-  // * Create two new objects, one a villain and one a hero and fight it out with methods!
+  // * Create two new objects, one a villain and one a hero and fight it out with method
+  // 
