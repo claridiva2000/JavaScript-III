@@ -17,13 +17,12 @@
 function GameObject(object){
   this.createdAt = object.createdAt;
   this.dimensions= object.dimensions;
+  this.name = object.name;
 }
 
 GameObject.prototype.destroy = function() {
-  return `Object was removed from the game`;
+  return `${this.name} was removed from the game`;  //why doesn't name work here, but it is still inherited in CharacterStats? 
 };
-
-
 
 /*
   === CharacterStats ===
@@ -36,7 +35,9 @@ function CharacterStats(stats){
   GameObject.call(this, stats);
   this.healthPoints = stats.healthPoints;
   this.name= stats.name;
-}
+};
+
+CharacterStats.prototype = Object.create(GameObject.prototype);  
 
 CharacterStats.prototype.takeDamage = function() {
   return `${this.name} took damage.`;
@@ -59,8 +60,10 @@ function Humanoid(hooman){
   this.language= hooman.language;
 }
 
+Humanoid.prototype = Object.create(CharacterStats.prototype);
+
 Humanoid.prototype.greet = function() {
-  return `'${this.name} offers a greeting in ${this.language}.'`;
+  return `${this.name} offers a greeting in ${this.language}.`;
 };
 /*
   * Inheritance chain: GameObject -> CharacterStats -> Humanoid
